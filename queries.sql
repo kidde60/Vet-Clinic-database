@@ -12,4 +12,6 @@ Find all animals with a weight between 10.4kg and 17.3kg (including the animals 
 -- Find all animals whose name ends in "mon".
 SELECT name from animals WHERE name like '%mon';
 
-
+-- List the name of all animals born between 2016 and 2019.
+SELECT name from animals WHERE date_of_birth >= '2016-01-10' and date_of_birth < '2019-12-31';
+ 
