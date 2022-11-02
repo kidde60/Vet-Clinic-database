@@ -26,3 +26,6 @@ SELECT name, escape_attempts from animals where weight_kg > 10.5;
 
 -- Find all animals that are neutered.
 SELECT * from animals where neutered = true;
+
+-- Find all animals not named Gabumon.
+SELECT * from animals where name != 'Gabumon';
