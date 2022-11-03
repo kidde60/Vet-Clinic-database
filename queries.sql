@@ -51,4 +51,9 @@ Verify that change was made and persists after commit.*/
  --Commit the transaction.
   COMMIT;
 
+-- Now, take a deep breath and... Inside a transaction delete all records in the animals table, then roll back the transaction
+begin transaction;
+delete from animals;
+--After the rollback verify if all records in the animals table still exists. After that, you can start breathing as usual ;)
+ROLLBACK;
 
