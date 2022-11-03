@@ -84,4 +84,29 @@ ROLLBACK TO SP1;
  -- Commit transaction.
  COMMIT;
 
+/* Write queries to answer the following questions:
+How many animals are there?
+How many animals have never tried to escape?
+What is the average weight of animals?
+Who escapes the most, neutered or not neutered animals?
+What is the minimum and maximum weight of each type of animal?
+What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+*/
 
+--How many animals are there?
+SELECT COUNT(*) from animals;
+
+--How many animals have never tried to escape?
+SELECT COUNT(*) as "number of animals that have never escaped"from animals where escape_attempts = 0;
+
+--What is the average weight of animals?
+SELECT AVG(weight_kg) as "Average weight of animals" from animals;
+
+--Who escapes the most, neutered or not neutered animals?
+select neutered, sum(escape_attempts) as "Total number of escapes" from animals group by neutered;
+
+--What is the minimum and maximum weight of each type of animal?
+select min(weight_kg) as "minimum_animals_weight (kg)", max(weight_kg) as "maximum_animals_weight (kg)", species from animals group by species;
+
+--What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+select avg(escape_attempts) as "Average of Escaped Animal Per Species", species as "Type" from animals where date_of_birth between '01-JAN-1990' and '01-01-2000' group by species;
