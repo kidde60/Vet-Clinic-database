@@ -57,3 +57,31 @@ delete from animals;
 --After the rollback verify if all records in the animals table still exists. After that, you can start breathing as usual ;)
 ROLLBACK;
 
+ /*Inside a transaction:
+Delete all animals born after Jan 1st, 2022.
+Create a savepoint for the transaction.
+Update all animals' weight to be their weight multiplied by -1.
+Rollback to the savepoint
+Update all animals' weights that are negative to be their weight multiplied by -1.
+Commit transaction
+*/
+
+-- Delete all animals born after Jan 1st, 2022.
+delete from animals where date_of_birth > '01-01-2022';
+
+-- Create a savepoint for the transaction.
+savepoint SP1;
+
+-- Update all animals' weight to be their weight multiplied by -1.
+UPDATE animals SET weight_kg = weight_kg * -1;
+
+-- Rollback to the savepoint.
+ROLLBACK TO SP1;
+
+-- Update all animals' weights that are negative to be their weight multiplied by -1.
+ UPDATE animals SET weight_kg = weight_kg * -1 where weight_kg  < 0;
+
+ -- Commit transaction.
+ COMMIT;
+
+
