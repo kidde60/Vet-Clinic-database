@@ -1,8 +1,6 @@
-# curriculum-databases-projects-template
+# Vet clinic database: query and update animals table
 
-> This template should be used for database related projects at Microverse.
-> In this project, you will use a relational database to create the initial data structure for a vet clinic. You will create a table to store animals' information, insert some data into it, and query it..
-
+> In this project, you will use transactions to update and delete records. You will also use your knowledge of aggregate functions and GROUP BY to answer analytical questions.
 
 ## Getting Started
 
