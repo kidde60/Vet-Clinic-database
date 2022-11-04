@@ -110,3 +110,33 @@ select min(weight_kg) as "minimum_animals_weight (kg)", max(weight_kg) as "maxim
 
 --What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 select avg(escape_attempts) as "Average of Escaped Animal Per Species", species as "Type" from animals where date_of_birth between '01-JAN-1990' and '01-01-2000' group by species;
+
+/*Write queries (using JOIN) to answer the following questions:
+What animals belong to Melody Pond?
+List of all animals that are pokemon (their type is Pokemon).
+List all owners and their animals, remember to include those that don't own any animal.
+How many animals are there per species?
+List all Digimon owned by Jennifer Orwell.
+List all animals owned by Dean Winchester that haven't tried to escape.
+Who owns the most animals?*/
+
+--What animals belong to Melody Pond?
+SELECT name FROM animals INNER JOIN owners ON animals.owner_id=owners.id WHERE owners.full_name='Melody Pond';
+
+--List of all animals that are pokemon (their type is Pokemon).
+SELECT * FROM animals LEFT JOIN species ON animals.species_id=species.id WHERE species.name='Pokemon';
+
+--List all owners and their animals, remember to include those that don't own any animal.
+SELECT * FROM owners LEFT JOIN animals ON owners.id=animals.owner_id;
+
+--How many animals are there per species?
+SELECT species.name, COUNT(animals.species_id) FROM animals JOIN species ON species.id = animals.species_id GROUP BY species.name;
+
+--List all Digimon owned by Jennifer Orwell.
+SELECT * FROM animals a JOIN owners o ON a.owner_id=o.id JOIN species s ON a.species_id=s.id WHERE o.full_name='Jennifer Orwell' AND s.name='Digimon';
+
+--List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT animals.name from animals JOIN owners ON owners.id = animals.owner_id WHERE animals.escape_attempts = 0 AND animals.owner_id = 5;
+
+--Who owns the most animals?
+SELECT full_name, COUNT(owner_id) FROM owners JOIN animals on owners.id = animals.owner_id GROUP BY full_name ORDER BY COUNT (owner_id) desc limit 1;
