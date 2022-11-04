@@ -18,3 +18,26 @@ CREATE TABLE animals (
 );
 -- Added a new column called species
 ALTER TABLE animals ADD species text;
+
+--create Owner's table 
+ CREATE TABLE owners ( 
+    id serial PRIMARY KEY NOT NULL, 
+    full_name varchar(50) NOT NULL, 
+    age INT
+    );
+
+--create species table
+CREATE TABLE species ( 
+    id serial PRIMARY KEY NOT NULL,
+     name varchar(50) NOT NULL
+     );
+
+--Add column species_id which is a foreign key referencing species table
+ALTER TABLE animals ADD species_id INT references species(id);
+
+--Add column owner_id which is a foreign key referencing the owners table
+ALTER TABLE animals ADD owner_id INT references owners(id);
+
+--Remove column called species from animals table.
+ALTER TABLE animals DROP COLUMN species;
+     
