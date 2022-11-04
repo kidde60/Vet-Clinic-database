@@ -1,6 +1,6 @@
-# Vet clinic database: query and update animals table
+# Vet clinic database: query multiple tables.
 
-> In this project, you will use transactions to update and delete records. You will also use your knowledge of aggregate functions and GROUP BY to answer analytical questions.
+> In this project you will add some new tables and add foreign key columns to your existing animals table to model one-to-many relationships. Afterward, you will use JOIN to query the data
 
 ## Getting Started
 
