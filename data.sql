@@ -36,3 +36,4 @@ UPDATE animals SET owner_id=4 WHERE name IN ('Charmander', 'Squirtle', 'Blossom'
 
 --Dean Winchester owns Angemon and Boarmon.
 UPDATE animals SET owner_id=5 WHERE name IN ('Angemon', 'Boarmon');
+
