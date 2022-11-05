@@ -40,4 +40,22 @@ ALTER TABLE animals ADD owner_id INT references owners(id);
 
 --Remove column called species from animals table.
 ALTER TABLE animals DROP COLUMN species;
-     
+
+--Create a table named vets
+CREATE TABLE vets (
+    id serial PRIMARY KEY NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    age INT,
+    date_of_graduation DATE
+);
+
+CREATE TABLE specializations(
+    vets_id INT REFERENCES vets (id),
+    species_id INT REFERENCES species (id)
+    );
+
+CREATE TABLE visits(
+    vets_id INT REFERENCES vets(id),
+    animal_id INT REFERENCES animals(id),
+    visit_date DATE
+    );
